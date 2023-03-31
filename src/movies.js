@@ -1,7 +1,7 @@
 // Iteration 1: All directors? - Get the array of all directors.
 // _Bonus_: It seems some of the directors had directed multiple movies so they will pop up multiple times in the array of directors.
 // How could you "clean" a bit this array and make it unified (without duplicates)?
-const directors = movies.map(function getAllDirectors(moviesArray) {
+const directors = movies.map(function getAllDirectors(moviesArray) {//the name of the function (getAllDirectors) can stay??
     return moviesArray.director
 })
 console.log(directors)
@@ -18,6 +18,7 @@ function howManyMovies(moviesArray) {
     return stevenSpielbergDrama
 }
 console.log(howManyMovies(movies))
+// console.log(howManyMovies(movies).length) -> just the nº of movies
 
 //const stevenSpielbergDrama = movies.filter(moviesArray => moviesArray.director.includes('Steven Spielberg') && moviesArray.genre.includes('Drama'))
 //console.log(stevenSpielbergDrama)
@@ -39,8 +40,23 @@ const sumScores = allScores.reduce(function (accumulator, currentValue) {
   }
   console.log(scoresAverage());
 
-// Iteration 4: Drama movies - Get the average of Drama Movies
-function dramaMoviesScore(moviesArray) {}
+// Iteration 4: Drama movies - Get the average of Drama Movies - function dramaMoviesScore(moviesArray) {}
+
+//look for every drama movie
+const dramaMovies = movies.filter(moviesArray => moviesArray.genre.includes('Drama'))
+//console.log(dramaMovies)
+
+//for every drama movies get an array of score 
+/*const dramaMoviesScore = dramaMovies.map(function(score) {
+    return dramaMovies.score
+})- return undefined */ 
+
+function dramaScoresAverage(moviesArray) {
+    const avg = dramaMoviesScore / dramaMoviesScore.length
+    const roundAvg = Math.round(avg * 100) / 100;
+    return roundAvg
+  }
+  console.log(dramaScoresAverage());
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(moviesArray) {}
