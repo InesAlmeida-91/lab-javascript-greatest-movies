@@ -23,7 +23,21 @@ console.log(howManyMovies(movies))
 //console.log(stevenSpielbergDrama)
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
-const avarageScore = moviesfunction scoresAverage(moviesArray) {}
+
+const allScores = movies.map(function (moviesArray) {
+    return moviesArray.score
+})
+
+const sumScores = allScores.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue;
+  });
+
+  function scoresAverage(moviesArray) {
+    const avg = sumScores / allScores.length
+    const roundAvg = Math.round(avg * 100) / 100;
+    return roundAvg
+  }
+  console.log(scoresAverage());
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
 function dramaMoviesScore(moviesArray) {}
