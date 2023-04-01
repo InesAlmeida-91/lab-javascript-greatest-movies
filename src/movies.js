@@ -1,62 +1,56 @@
 // Iteration 1: All directors? - Get the array of all directors.
 // _Bonus_: It seems some of the directors had directed multiple movies so they will pop up multiple times in the array of directors.
-// How could you "clean" a bit this array and make it unified (without duplicates)?
-const directors = movies.map(function getAllDirectors(moviesArray) {//the name of the function (getAllDirectors) can stay??
-    return moviesArray.director
-})
-console.log(directors)
+// How could you "clean" a bit this array and make it unified (without duplicates)
 
-function removeDuplicates(directors) {
-    return directors.filter((director, index) => directors.indexOf(director) === index);
+
+function getAllDirectors(moviesArray) {
+  const directors = moviesArray.map(allDirectors => allDirectors.director)
+  return directors
 }
-console.log(removeDuplicates(directors));
+console.log(getAllDirectors(movies))
+
+//function removeDuplicates(directorsArray) {
+//    const duplicatesDirectors = directorsArray.filter(director, index) => directorsArray.indexOf(director) === index);
+  //  return duplicatesDirectors
+//}
+//console.log(removeDuplicates(movies));
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
-
 function howManyMovies(moviesArray) {
-    const stevenSpielbergDrama = movies.filter(moviesArray => moviesArray.director.includes('Steven Spielberg') && moviesArray.genre.includes('Drama'))
-    return stevenSpielbergDrama
+    const stevenSpielbergDrama = moviesArray.filter(movies => movies.director === 'Steven Spielberg' && movies.genre.includes('Drama'))
+    return stevenSpielbergDrama.length
 }
-console.log(howManyMovies(movies))
-// console.log(howManyMovies(movies).length) -> just the nº of movies
+//console.log(howManyMovies(movies))
 
-//const stevenSpielbergDrama = movies.filter(moviesArray => moviesArray.director.includes('Steven Spielberg') && moviesArray.genre.includes('Drama'))
-//console.log(stevenSpielbergDrama)
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
 
-const allScores = movies.map(function (moviesArray) {
-    return moviesArray.score
-})
-
-const sumScores = allScores.reduce(function (accumulator, currentValue) {
+function scoresAverage(moviesArray) {
+  if(moviesArray.length === 0){
+    return 0
+  }
+  const allScores = moviesArray.map(function (movies) {
+    return movies.score
+});
+  const sumScores = allScores.reduce(function (accumulator, currentValue) {
     return accumulator + currentValue;
-  });
+  }, 0);
+  const avg = sumScores / allScores.length
+  const roundAvg = Math.round(avg * 100) / 100;
+  return roundAvg
+}
+console.log(scoresAverage(movies))
 
-  function scoresAverage(moviesArray) {
-    const avg = sumScores / allScores.length
+// Iteration 4: Drama movies - Get the average of Drama Movies - 
+
+
+function dramaMoviesScore(moviesArray) {
+    const dramaMovies = movies.filter(moviesArray => moviesArray.genre.includes('Drama')).map(movie => movie.score)
+    const avg = dramaMovies / dramaMovies.length
     const roundAvg = Math.round(avg * 100) / 100;
     return roundAvg
   }
-  console.log(scoresAverage());
-
-// Iteration 4: Drama movies - Get the average of Drama Movies - function dramaMoviesScore(moviesArray) {}
-
-//look for every drama movie
-const dramaMovies = movies.filter(moviesArray => moviesArray.genre.includes('Drama'))
-//console.log(dramaMovies)
-
-//for every drama movies get an array of score 
-/*const dramaMoviesScore = dramaMovies.map(function(score) {
-    return dramaMovies.score
-})- return undefined */ 
-
-function dramaScoresAverage(moviesArray) {
-    const avg = dramaMoviesScore / dramaMoviesScore.length
-    const roundAvg = Math.round(avg * 100) / 100;
-    return roundAvg
-  }
-  console.log(dramaScoresAverage());
+  console.log(dramaMoviesScore());
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(moviesArray) {}
