@@ -39,19 +39,24 @@ function scoresAverage(moviesArray) {
   const roundAvg = Math.round(avg * 100) / 100;
   return roundAvg
 }
+//should return average even if one of the movies does not have score
 //console.log(scoresAverage(movies))
 
 // Iteration 4: Drama movies - Get the average of Drama Movies - 
 
 
 function dramaMoviesScore(moviesArray) {
-  const dramaMovies = movies.filter(movie => movie.genre.includes('Drama'));
+  const dramaMovies = moviesArray.filter(movie => movie.genre.includes('Drama'));
   const dramaScore = dramaMovies.reduce((accumulator, drama) => {return accumulator + drama.score}, 0);
   const avg = dramaScore / dramaMovies.length
   const roundAvg = Math.round(avg * 100) / 100;
+  if(dramaMovies.length === 0) {
+    return 0
+  }
   return roundAvg
 }
-  //console.log(dramaMoviesScore());
+//console.log(dramaMoviesScore(movies));
+
 
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
@@ -85,10 +90,29 @@ function orderAlphabetically(moviesArray) {
   const titleOnly = titleOrder.slice(0,20).map(movies => movies.title);
   return titleOnly
 }
-console.log(orderAlphabetically(movies))
+//console.log(orderAlphabetically(movies))
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
-function turnHoursToMinutes(moviesArray) {}
+
+/*function turnHoursToMinutes(moviesArray) {
+  const movieDuration = moviesArray.map(movies => movies.duration);
+  if(movieDuration)
+
+  return movieDuration;
+}
+console.log(turnHoursToMinutes(movies))
+
+function timeConvert(n) { 
+  var num = n; 
+  var hours = (num / 60); 
+  var rhours = Math. floor(hours);      
+  var minutes = (hours - rhours) * 60; 
+  var rminutes = Math. round(minutes); 
+  return num + " minutes = " + rhours + " hour(s) and " + rminutes + " minute(s)."; } 
+console. log(timeConvert(200));*/
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
-function bestYearAvg(moviesArray) {}
+function bestYearAvg(moviesArray) {
+  const sameYear = moviesArray.map(movies => movies.year);
+  return sameYear //'The best year was <YEAR> with an average score of <RATE>'
+}
