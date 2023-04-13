@@ -94,25 +94,23 @@ function orderAlphabetically(moviesArray) {
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 
-/*function turnHoursToMinutes(moviesArray) {
-  const movieDuration = moviesArray.map(movies => movies.duration);
-  if(movieDuration)
-
-  return movieDuration;
+function turnHoursToMinutes(moviesArray) {
+  const movieDuration = moviesArray.map(movie => moviesArray.duration)
+  //transform string "xh xxmin" into a number
+  //transfor hours in to minutes
+  //sum hours(in minutes) with minutes
+  return movieDuration
 }
 console.log(turnHoursToMinutes(movies))
 
-function timeConvert(n) { 
-  var num = n; 
-  var hours = (num / 60); 
-  var rhours = Math. floor(hours);      
-  var minutes = (hours - rhours) * 60; 
-  var rminutes = Math. round(minutes); 
-  return num + " minutes = " + rhours + " hour(s) and " + rminutes + " minute(s)."; } 
-console. log(timeConvert(200));*/
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg(moviesArray) {
-  const sameYear = moviesArray.map(movies => movies.year);
-  return sameYear //'The best year was <YEAR> with an average score of <RATE>'
+  const avarageScores = {};
+  const years = moviesArray.map(movies => movies.year); // all years
+  const sameYears = years.sort()//same year together
+  // se o ano so tem um score a media é esse score
+  //se o ano é igual somar os scores desse ano a dividir por nº de anos iguais
+  //se score maior retornar o ano
+  return //'The best year was ${} with an average score of <RATE>'
 }
